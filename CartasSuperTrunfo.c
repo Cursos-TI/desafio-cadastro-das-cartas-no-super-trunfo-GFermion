@@ -1353,7 +1353,7 @@ int estadoIndex1, cidadeIndex1, estadoIndex2, cidadeIndex2;
 
     // Comparação das cidades selecionadas. 
     printf("\n********************** COMPARAÇÃO DAS CIDADES **********************\n");
-    printf("\nCaso o resultado seja 1 a carta: %s vence, caso o resultado seja 0 a carta : %s vence.\n", estados[estadoIndex1].cidades[cidadeIndex1].codigo, estados[estadoIndex2].cidades[cidadeIndex2].codigo);
+    printf("\nCaso o resultado seja 1 a carta: %s vence, caso o resultado seja 0 a carta: %s vence.\n", estados[estadoIndex1].cidades[cidadeIndex1].codigo, estados[estadoIndex2].cidades[cidadeIndex2].codigo);
 
     printf("PIB: %d",estados[estadoIndex1].cidades[cidadeIndex1].pib > estados[estadoIndex2].cidades[cidadeIndex2].pib );
     printf("Área: %d",estados[estadoIndex1].cidades[cidadeIndex1].area > estados[estadoIndex2].cidades[cidadeIndex2].area );
