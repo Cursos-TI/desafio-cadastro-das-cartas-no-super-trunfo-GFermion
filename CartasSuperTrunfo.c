@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+#include <stdlib.h>
+#include <time.h>
 /*
 Estado (char)
 Código da carta (char[])
@@ -1280,10 +1276,24 @@ printf("\nDensidade Populacional: %.1f Cidadãos Por KM²",estados[7].cidades[3]
 printf("\nSuper Poder: %f\n",estados[7].cidades[3].superpoder);
 
 // Seleção das cidades.
-int estadoIndex1, cidadeIndex1, estadoIndex2, cidadeIndex2;
+int estadoIndex1, cidadeIndex1, estadoIndex2, cidadeIndex2, menuinicial, menuestado1, menucidade1, menuestado2, menucidade2, menuatributos1, menuatributos2;
+int comparacao1, comparacao2;
 
-    printf("\nConsulta de dados:\n");
-    printf("Estados cadastrados:\n");
+    printf("\n------- Menu Inicial -------\n");
+    printf("1. Vs Jogador.\n");
+    printf("2. Vs CPU.\n");
+    printf("3. Regras.\n");
+    printf("4. Quit Game.\n");
+    printf("Escolha uma opção: ");
+    scanf(" %d", &menuinicial);
+
+    switch (menuinicial)
+    {
+    case 1:
+    // Modo de jogo PVP.
+    // Escolha do primeiro jogador.
+    printf("\nInciando modo Player vs Player....\n");
+    printf("\nPlayer 1: Escolha seu estado.\n");
     printf("1. %s\n", estados[0].nome);
     printf("2. %s\n", estados[1].nome);
     printf("3. %s\n", estados[2].nome);
@@ -1292,77 +1302,1681 @@ int estadoIndex1, cidadeIndex1, estadoIndex2, cidadeIndex2;
     printf("6. %s\n", estados[5].nome);
     printf("7. %s\n", estados[6].nome);
     printf("8. %s\n", estados[7].nome);
+    printf("Escolha um estado: ");
+    scanf(" %d", &menuestado1);
 
-    // Seleção da primeira cidade
-    printf("\nSelecione a primeira cidade:\n");
-    printf("Digite o numero do estado (1 a 8): ");
-    scanf(" %d", &estadoIndex1);
-    estadoIndex1--; // Ajusta para índice base 0
+    printf("\nPlayer 1: Agora escolha sua Cidade.\n");
 
-    printf("\nCidades cadastradas no estado %s:\n", estados[estadoIndex1].nome);
-    printf("1. %s\n", estados[estadoIndex1].cidades[0].codigo);
-    printf("2. %s\n", estados[estadoIndex1].cidades[1].codigo);
-    printf("3. %s\n", estados[estadoIndex1].cidades[2].codigo);
-    printf("4. %s\n", estados[estadoIndex1].cidades[3].codigo);
+    switch (menuestado1)
+    {
+    case 1:
 
-    printf("Digite o numero da cidade (1 a 4): ");
-    scanf(" %d", &cidadeIndex1);
-    cidadeIndex1--; // Ajusta para índice base 0
+    printf("\nCidades cadastradas no estado %s:\n", estados[0].nome);
+    printf("1. %s\n", estados[0].cidades[0].codigo);
+    printf("2. %s\n", estados[0].cidades[1].codigo);
+    printf("3. %s\n", estados[0].cidades[2].codigo);
+    printf("4. %s\n", estados[0].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
 
-    // Seleção da segunda cidade
-    printf("\nSelecione a segunda cidade:\n");
-    printf("Digite o numero do estado (1 a 8): ");
-    scanf(" %d", &estadoIndex2);
-    estadoIndex2--; // Ajusta para índice base 0
+    switch (menucidade1)
+    {
+    case 1:
 
-    printf("\nCidades cadastradas no estado %s:\n", estados[estadoIndex2].nome);
-    printf("1. %s\n", estados[estadoIndex2].cidades[0].codigo);
-    printf("2. %s\n", estados[estadoIndex2].cidades[1].codigo);
-    printf("3. %s\n", estados[estadoIndex2].cidades[2].codigo);
-    printf("4. %s\n", estados[estadoIndex2].cidades[3].codigo);
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[0].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[1].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[2].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[3].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 3;
+
+        break;
     
+    default:
 
-    printf("Digite o numero da cidade (1 a 4): ");
-    scanf(" %d", &cidadeIndex2);
-    cidadeIndex2--; // Ajusta para índice base 0
+    printf("Opção Invalida.");
 
+        break;
 
-    // Exibe os detalhes das cidades selecionadas
-    printf("\n********************** DETALHES DAS CIDADES SELECIONADAS **********************\n");
+    }
 
-    printf("\n********************** PRIMEIRA CIDADE **********************\n");
-    printf("\nCodigo da carta: %s",estados[estadoIndex1].cidades[cidadeIndex1].codigo);
-    printf("\nPIB: %.1f R$",estados[estadoIndex1].cidades[cidadeIndex1].pib);
-    printf("\nArea: %.1f KM²",estados[estadoIndex1].cidades[cidadeIndex1].area);
-    printf("\nNumero de pontos turisticos: %i",estados[estadoIndex1].cidades[cidadeIndex1].pontosturisticos);
-    printf("\nPopulação: %lu",estados[estadoIndex1].cidades[cidadeIndex1].populacao);
-    printf("\nPIB per capita: %.1f R$",estados[estadoIndex1].cidades[cidadeIndex1].pibpercapta);
-    printf("\nDensidade Populacional: %.1f Cidadãos Por KM²",estados[estadoIndex1].cidades[cidadeIndex1].densidadepopulacional);
-    printf("\nSuper Poder: %f\n",estados[estadoIndex1].cidades[cidadeIndex1].superpoder);
+        break;
 
-    printf("\n********************** SEGUNDA CIDADE **********************\n");
-    printf("\nCodigo da carta: %s",estados[estadoIndex2].cidades[cidadeIndex2].codigo);
-    printf("\nPIB: %.1f R$",estados[estadoIndex2].cidades[cidadeIndex2].pib);
-    printf("\nArea: %.1f KM²",estados[estadoIndex2].cidades[cidadeIndex2].area);
-    printf("\nNumero de pontos turisticos: %i",estados[estadoIndex2].cidades[cidadeIndex2].pontosturisticos);
-    printf("\nPopulação: %lu",estados[estadoIndex2].cidades[cidadeIndex2].populacao);
-    printf("\nPIB per capita: %.1f R$",estados[estadoIndex2].cidades[cidadeIndex2].pibpercapta);
-    printf("\nDensidade Populacional: %.1f Cidadãos Por KM²",estados[estadoIndex2].cidades[cidadeIndex2].densidadepopulacional);
-    printf("\nSuper Poder: %f\n",estados[estadoIndex2].cidades[cidadeIndex2].superpoder);
+    case 2:
 
+    printf("\nCidades cadastradas no estado %s:\n", estados[1].nome);
+    printf("1. %s\n", estados[1].cidades[0].codigo);
+    printf("2. %s\n", estados[1].cidades[1].codigo);
+    printf("3. %s\n", estados[1].cidades[2].codigo);
+    printf("4. %s\n", estados[1].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
 
-    // Comparação das cidades selecionadas. 
-    printf("\n********************** COMPARAÇÃO DAS CIDADES **********************\n");
-    printf("\nCaso o resultado seja 1 a carta: %s vence, caso o resultado seja 0 a carta: %s vence.\n", estados[estadoIndex1].cidades[cidadeIndex1].codigo, estados[estadoIndex2].cidades[cidadeIndex2].codigo);
+    switch (menucidade1)
+    {
+    case 1:
 
-    printf("PIB: %d",estados[estadoIndex1].cidades[cidadeIndex1].pib > estados[estadoIndex2].cidades[cidadeIndex2].pib );
-    printf("Área: %d",estados[estadoIndex1].cidades[cidadeIndex1].area > estados[estadoIndex2].cidades[cidadeIndex2].area );
-    printf("Número de pontos Turísticos: %d",estados[estadoIndex1].cidades[cidadeIndex1].pontosturisticos > estados[estadoIndex2].cidades[cidadeIndex2].pontosturisticos );
-    printf("População: %d",estados[estadoIndex1].cidades[cidadeIndex1].populacao > estados[estadoIndex2].cidades[cidadeIndex2].populacao );
-    printf("PIB per capita: %d",estados[estadoIndex1].cidades[cidadeIndex1].pibpercapta > estados[estadoIndex2].cidades[cidadeIndex2].pibpercapta );
-    printf("Densidade Populacional: %d",estados[estadoIndex1].cidades[cidadeIndex1].densidadepopulacional < estados[estadoIndex2].cidades[cidadeIndex2].densidadepopulacional );
-    printf("Super Poder: %d",estados[estadoIndex1].cidades[cidadeIndex1].superpoder > estados[estadoIndex2].cidades[cidadeIndex2].superpoder );
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[0].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 0;
 
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[1].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[2].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[3].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 3:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[2].nome);
+    printf("1. %s\n", estados[2].cidades[0].codigo);
+    printf("2. %s\n", estados[2].cidades[1].codigo);
+    printf("3. %s\n", estados[2].cidades[2].codigo);
+    printf("4. %s\n", estados[2].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[0].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[1].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[2].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[3].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 4:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[3].nome);
+    printf("1. %s\n", estados[3].cidades[0].codigo);
+    printf("2. %s\n", estados[3].cidades[1].codigo);
+    printf("3. %s\n", estados[3].cidades[2].codigo);
+    printf("4. %s\n", estados[3].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[0].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[1].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[2].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[3].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 5:
+    printf("\nCidades cadastradas no estado %s:\n", estados[4].nome);
+    printf("1. %s\n", estados[4].cidades[0].codigo);
+    printf("2. %s\n", estados[4].cidades[1].codigo);
+    printf("3. %s\n", estados[4].cidades[2].codigo);
+    printf("4. %s\n", estados[4].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[0].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[1].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[2].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[3].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 6:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[5].nome);
+    printf("1. %s\n", estados[5].cidades[0].codigo);
+    printf("2. %s\n", estados[5].cidades[1].codigo);
+    printf("3. %s\n", estados[5].cidades[2].codigo);
+    printf("4. %s\n", estados[5].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[0].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[1].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[2].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[3].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 7:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[6].nome);
+    printf("1. %s\n", estados[6].cidades[0].codigo);
+    printf("2. %s\n", estados[6].cidades[1].codigo);
+    printf("3. %s\n", estados[6].cidades[2].codigo);
+    printf("4. %s\n", estados[6].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[0].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[1].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[2].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[3].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 8:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[7].nome);
+    printf("1. %s\n", estados[7].cidades[0].codigo);
+    printf("2. %s\n", estados[7].cidades[1].codigo);
+    printf("3. %s\n", estados[7].cidades[2].codigo);
+    printf("4. %s\n", estados[7].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[0].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[1].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[2].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[3].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    default:
+
+    printf("\nOpção Invalida.\n");
+
+        break;
+    }
+
+    // Escolha do segundo jogador.
+    printf("\nPlayer 2: Escolha seu estado.\n");
+    printf("1. %s\n", estados[0].nome);
+    printf("2. %s\n", estados[1].nome);
+    printf("3. %s\n", estados[2].nome);
+    printf("4. %s\n", estados[3].nome);
+    printf("5. %s\n", estados[4].nome);
+    printf("6. %s\n", estados[5].nome);
+    printf("7. %s\n", estados[6].nome);
+    printf("8. %s\n", estados[7].nome);
+    printf("Escolha um estado: ");
+    scanf(" %d", &menuestado2);
+
+    printf("\nPlayer 2: Agora escolha sua Cidade.\n");
+
+    switch (menuestado2)
+    {
+    case 1:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[0].nome);
+    printf("1. %s\n", estados[0].cidades[0].codigo);
+    printf("2. %s\n", estados[0].cidades[1].codigo);
+    printf("3. %s\n", estados[0].cidades[2].codigo);
+    printf("4. %s\n", estados[0].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[0].codigo);
+        estadoIndex2 = 0;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[1].codigo);
+        estadoIndex2 = 0;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[2].codigo);
+        estadoIndex2 = 0;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[3].codigo);
+        estadoIndex2 = 0;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 2:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[1].nome);
+    printf("1. %s\n", estados[1].cidades[0].codigo);
+    printf("2. %s\n", estados[1].cidades[1].codigo);
+    printf("3. %s\n", estados[1].cidades[2].codigo);
+    printf("4. %s\n", estados[1].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[0].codigo);
+        estadoIndex2 = 1;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[1].codigo);
+        estadoIndex2 = 1;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[2].codigo);
+        estadoIndex2 = 1;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[3].codigo);
+        estadoIndex2 = 1;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 3:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[2].nome);
+    printf("1. %s\n", estados[2].cidades[0].codigo);
+    printf("2. %s\n", estados[2].cidades[1].codigo);
+    printf("3. %s\n", estados[2].cidades[2].codigo);
+    printf("4. %s\n", estados[2].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[0].codigo);
+        estadoIndex2 = 2;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[1].codigo);
+        estadoIndex2 = 2;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[2].codigo);
+        estadoIndex2 = 2;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[3].codigo);
+        estadoIndex2 = 2;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 4:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[3].nome);
+    printf("1. %s\n", estados[3].cidades[0].codigo);
+    printf("2. %s\n", estados[3].cidades[1].codigo);
+    printf("3. %s\n", estados[3].cidades[2].codigo);
+    printf("4. %s\n", estados[3].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[0].codigo);
+        estadoIndex2 = 3;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[1].codigo);
+        estadoIndex2 = 3;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[2].codigo);
+        estadoIndex2 = 3;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[3].codigo);
+        estadoIndex2 = 3;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 5:
+    printf("\nCidades cadastradas no estado %s:\n", estados[4].nome);
+    printf("1. %s\n", estados[4].cidades[0].codigo);
+    printf("2. %s\n", estados[4].cidades[1].codigo);
+    printf("3. %s\n", estados[4].cidades[2].codigo);
+    printf("4. %s\n", estados[4].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[0].codigo);
+        estadoIndex2 = 4;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[1].codigo);
+        estadoIndex2 = 4;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[2].codigo);
+        estadoIndex2 = 4;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[3].codigo);
+        estadoIndex2 = 4;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 6:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[5].nome);
+    printf("1. %s\n", estados[5].cidades[0].codigo);
+    printf("2. %s\n", estados[5].cidades[1].codigo);
+    printf("3. %s\n", estados[5].cidades[2].codigo);
+    printf("4. %s\n", estados[5].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[0].codigo);
+        estadoIndex2 = 5;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[1].codigo);
+        estadoIndex2 = 5;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[2].codigo);
+        estadoIndex2 = 5;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[3].codigo);
+        estadoIndex2 = 5;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 7:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[6].nome);
+    printf("1. %s\n", estados[6].cidades[0].codigo);
+    printf("2. %s\n", estados[6].cidades[1].codigo);
+    printf("3. %s\n", estados[6].cidades[2].codigo);
+    printf("4. %s\n", estados[6].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[0].codigo);
+        estadoIndex2 = 6;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[1].codigo);
+        estadoIndex2 = 6;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[2].codigo);
+        estadoIndex2 = 6;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[3].codigo);
+        estadoIndex2 = 6;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 8:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[7].nome);
+    printf("1. %s\n", estados[7].cidades[0].codigo);
+    printf("2. %s\n", estados[7].cidades[1].codigo);
+    printf("3. %s\n", estados[7].cidades[2].codigo);
+    printf("4. %s\n", estados[7].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade2);
+
+    switch (menucidade2)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[0].codigo);
+        estadoIndex2 = 7;
+        cidadeIndex2 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[1].codigo);
+        estadoIndex2 = 7;
+        cidadeIndex2 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[2].codigo);
+        estadoIndex2 = 7;
+        cidadeIndex2 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[3].codigo);
+        estadoIndex2 = 7;
+        cidadeIndex2 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    default:
+
+    printf("\nOpção Invalida.\n");
+
+        break;
+    }
+
+    // Agora com as escolhas feitas vamos para a escolha de atributos a serem comparados e suas comparações.
+    if ((cidadeIndex1 == cidadeIndex2) && (estadoIndex1 == estadoIndex2))
+    {
+        printf("\nAs cidades são identicas, portanto é um empate.\n");
+
+    }else{
+
+        // Escolha do primeiro atributo a ser comparado.
+        printf("\nQual o primeiro atributo a ser comparado?\n");
+        printf("1. PIB.\n");
+        printf("2. Área.\n");
+        printf("3. População.\n");
+        printf("4. PIB per capta.\n");
+        printf("5. Densidade Populacional.\n");
+        printf("Escolha uma das opções: ");
+        scanf(" %d", &menuatributos1);
+
+        switch (menuatributos1)
+        {
+        case 1:
+
+            printf("\nComparando o PIB das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].pib > estados[estadoIndex2].cidades[cidadeIndex2].pib) ? 1 : 0;
+
+            break;
+
+        case 2:
+
+            printf("\nComparando a Área das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].area > estados[estadoIndex2].cidades[cidadeIndex2].area) ? 1 : 0;
+
+            break;
+
+        case 3:
+
+            printf("\nComparando a População das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].populacao > estados[estadoIndex2].cidades[cidadeIndex2].populacao) ? 1 : 0;
+
+            break;
+
+        case 4:
+
+            printf("\nComparando o PIB per capita das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].pibpercapta > estados[estadoIndex2].cidades[cidadeIndex2].pibpercapta) ? 1 : 0;
+
+            break;
+
+        case 5:
+
+            printf("\nComparando a Densidade populacional das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].densidadepopulacional < estados[estadoIndex2].cidades[cidadeIndex2].densidadepopulacional) ? 1 : 0;
+
+            break;
+
+        default:
+
+        printf("Opção Invalida.");
+
+            break;
+        }
+
+        // Escolha do segundo atributo a ser comparado.
+        printf("\nQual o segundo atributo a ser comparado?\n");
+        printf("1. PIB.\n");
+        printf("2. Área.\n");
+        printf("3. População.\n");
+        printf("4. PIB per capta.\n");
+        printf("5. Densidade Populacional.\n");
+        printf("Escolha uma das opções: ");
+        scanf(" %d", &menuatributos2);
+
+        if (menuatributos1 == menuatributos2)
+        {
+            printf("\nERRO: Os atributos a serem comparados são semelhantes.\n");
+        }else{
+        
+        switch (menuatributos2)
+        {
+        case 1:
+
+            printf("\nComparando o PIB das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].pib > estados[estadoIndex2].cidades[cidadeIndex2].pib) ? 1 : 0;
+
+            break;
+
+        case 2:
+
+            printf("\nComparando a Área das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].area > estados[estadoIndex2].cidades[cidadeIndex2].area) ? 1 : 0;
+
+            break;
+
+        case 3:
+
+            printf("\nComparando a População das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].populacao > estados[estadoIndex2].cidades[cidadeIndex2].populacao) ? 1 : 0;
+
+            break;
+
+        case 4:
+
+            printf("\nComparando o PIB per capita das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].pibpercapta > estados[estadoIndex2].cidades[cidadeIndex2].pibpercapta) ? 1 : 0;
+
+            break;
+
+        case 5:
+
+            printf("\nComparando a Densidade populacional das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].densidadepopulacional < estados[estadoIndex2].cidades[cidadeIndex2].densidadepopulacional) ? 1 : 0;
+
+            break;
+
+        default:
+
+        printf("Opção Invalida.");
+
+            break;
+        }
+    }
+        //Comparação dos atributos, se ambos os atributos forem "1" o player 1 vence, se for "1" e "0" é um empate e se for "0" e "0" o player 2 vence.
+        if (comparacao1 && comparacao2)
+        {
+
+            printf("\nPlayer 1 é o Vencedor.\n");
+
+        }else if (comparacao1 != comparacao2)
+        {
+
+            printf("\nFoi um Empate.\n");
+
+        }else{
+
+            printf("\nJogador 2 é o Vencedor.\n");
+
+        }
+        
+    }
+    
+    break;
+
+    case 2:
+
+    // Codigo do modo VS CPU.
+    // Randomização da escolha do CPU.
+
+    srand(time(0));
+    estadoIndex2 = rand() % 8;
+
+    srand(time(0));
+    cidadeIndex2 = rand() % 4;
+    
+    // Escolha do jogador.
+
+    printf("\nPlayer 1: Escolha seu estado.\n");
+    printf("1. %s\n", estados[0].nome);
+    printf("2. %s\n", estados[1].nome);
+    printf("3. %s\n", estados[2].nome);
+    printf("4. %s\n", estados[3].nome);
+    printf("5. %s\n", estados[4].nome);
+    printf("6. %s\n", estados[5].nome);
+    printf("7. %s\n", estados[6].nome);
+    printf("8. %s\n", estados[7].nome);
+    printf("Escolha um estado: ");
+    scanf(" %d", &menuestado1);
+
+    printf("\nPlayer 1: Agora escolha sua Cidade.\n");
+
+    switch (menuestado1)
+    {
+    case 1:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[0].nome);
+    printf("1. %s\n", estados[0].cidades[0].codigo);
+    printf("2. %s\n", estados[0].cidades[1].codigo);
+    printf("3. %s\n", estados[0].cidades[2].codigo);
+    printf("4. %s\n", estados[0].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[0].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[1].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[2].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[0].cidades[3].codigo);
+        estadoIndex1 = 0;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 2:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[1].nome);
+    printf("1. %s\n", estados[1].cidades[0].codigo);
+    printf("2. %s\n", estados[1].cidades[1].codigo);
+    printf("3. %s\n", estados[1].cidades[2].codigo);
+    printf("4. %s\n", estados[1].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[0].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[1].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[2].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[1].cidades[3].codigo);
+        estadoIndex1 = 1;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 3:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[2].nome);
+    printf("1. %s\n", estados[2].cidades[0].codigo);
+    printf("2. %s\n", estados[2].cidades[1].codigo);
+    printf("3. %s\n", estados[2].cidades[2].codigo);
+    printf("4. %s\n", estados[2].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[0].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[1].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[2].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[2].cidades[3].codigo);
+        estadoIndex1 = 2;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 4:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[3].nome);
+    printf("1. %s\n", estados[3].cidades[0].codigo);
+    printf("2. %s\n", estados[3].cidades[1].codigo);
+    printf("3. %s\n", estados[3].cidades[2].codigo);
+    printf("4. %s\n", estados[3].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[0].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[1].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[2].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[3].cidades[3].codigo);
+        estadoIndex1 = 3;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 5:
+    printf("\nCidades cadastradas no estado %s:\n", estados[4].nome);
+    printf("1. %s\n", estados[4].cidades[0].codigo);
+    printf("2. %s\n", estados[4].cidades[1].codigo);
+    printf("3. %s\n", estados[4].cidades[2].codigo);
+    printf("4. %s\n", estados[4].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[0].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[1].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[2].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[4].cidades[3].codigo);
+        estadoIndex1 = 4;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 6:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[5].nome);
+    printf("1. %s\n", estados[5].cidades[0].codigo);
+    printf("2. %s\n", estados[5].cidades[1].codigo);
+    printf("3. %s\n", estados[5].cidades[2].codigo);
+    printf("4. %s\n", estados[5].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[0].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[1].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[2].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[5].cidades[3].codigo);
+        estadoIndex1 = 5;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 7:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[6].nome);
+    printf("1. %s\n", estados[6].cidades[0].codigo);
+    printf("2. %s\n", estados[6].cidades[1].codigo);
+    printf("3. %s\n", estados[6].cidades[2].codigo);
+    printf("4. %s\n", estados[6].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[0].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[1].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[2].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[6].cidades[3].codigo);
+        estadoIndex1 = 6;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    case 8:
+
+    printf("\nCidades cadastradas no estado %s:\n", estados[7].nome);
+    printf("1. %s\n", estados[7].cidades[0].codigo);
+    printf("2. %s\n", estados[7].cidades[1].codigo);
+    printf("3. %s\n", estados[7].cidades[2].codigo);
+    printf("4. %s\n", estados[7].cidades[3].codigo);
+    printf("Escolha a cidade: ");
+    scanf(" %d", &menucidade1);
+
+    switch (menucidade1)
+    {
+    case 1:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[0].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 0;
+
+        break;
+
+    case 2:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[1].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 1;
+
+        break;
+
+    case 3:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[2].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 2;
+
+        break;
+
+    case 4:
+
+        printf("\nCidade %s escolhida com sucesso.", estados[7].cidades[3].codigo);
+        estadoIndex1 = 7;
+        cidadeIndex1 = 3;
+
+        break;
+    
+    default:
+
+    printf("Opção Invalida.");
+
+        break;
+
+    }
+
+        break;
+
+    default:
+
+    printf("\nOpção Invalida.\n");
+
+        break;
+    }
+
+    // Agora com as escolhas feitas vamos para a escolha de atributos a serem comparados e suas comparações.
+
+    if ((cidadeIndex1 == cidadeIndex2) && (estadoIndex1 == estadoIndex2))
+    {
+        printf("\nAs cidades são identicas, portanto é um empate.\n");
+
+    }else{
+
+        // Escolha do primeiro atributo a ser comparado.
+        printf("\nQual o primeiro atributo a ser comparado?\n");
+        printf("1. PIB.\n");
+        printf("2. Área.\n");
+        printf("3. População.\n");
+        printf("4. PIB per capta.\n");
+        printf("5. Densidade Populacional.\n");
+        printf("Escolha uma das opções: ");
+        scanf(" %d", &menuatributos1);
+
+        switch (menuatributos1)
+        {
+        case 1:
+
+            printf("\nComparando o PIB das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].pib > estados[estadoIndex2].cidades[cidadeIndex2].pib) ? 1 : 0;
+
+            break;
+
+        case 2:
+
+            printf("\nComparando a Área das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].area > estados[estadoIndex2].cidades[cidadeIndex2].area) ? 1 : 0;
+
+            break;
+
+        case 3:
+
+            printf("\nComparando a População das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].populacao > estados[estadoIndex2].cidades[cidadeIndex2].populacao) ? 1 : 0;
+
+            break;
+
+        case 4:
+
+            printf("\nComparando o PIB per capita das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].pibpercapta > estados[estadoIndex2].cidades[cidadeIndex2].pibpercapta) ? 1 : 0;
+
+            break;
+
+        case 5:
+
+            printf("\nComparando a Densidade populacional das cidades.\n");
+            comparacao1 = (estados[estadoIndex1].cidades[cidadeIndex1].densidadepopulacional < estados[estadoIndex2].cidades[cidadeIndex2].densidadepopulacional) ? 1 : 0;
+
+            break;
+
+        default:
+
+        printf("Opção Invalida.");
+
+            break;
+        }
+
+        // Escolha do segundo atributo a ser comparado.
+        printf("\nQual o segundo atributo a ser comparado?\n");
+        printf("1. PIB.\n");
+        printf("2. Área.\n");
+        printf("3. População.\n");
+        printf("4. PIB per capta.\n");
+        printf("5. Densidade Populacional.\n");
+        printf("Escolha uma das opções: ");
+        scanf(" %d", &menuatributos2);
+
+        if (menuatributos1 == menuatributos2)
+        {
+            printf("\nERRO: Os atributos a serem comparados são semelhantes.\n");
+        }else{
+        
+        switch (menuatributos2)
+        {
+        case 1:
+
+            printf("\nComparando o PIB das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].pib > estados[estadoIndex2].cidades[cidadeIndex2].pib) ? 1 : 0;
+
+            break;
+
+        case 2:
+
+            printf("\nComparando a Área das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].area > estados[estadoIndex2].cidades[cidadeIndex2].area) ? 1 : 0;
+
+            break;
+
+        case 3:
+
+            printf("\nComparando a População das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].populacao > estados[estadoIndex2].cidades[cidadeIndex2].populacao) ? 1 : 0;
+
+            break;
+
+        case 4:
+
+            printf("\nComparando o PIB per capita das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].pibpercapta > estados[estadoIndex2].cidades[cidadeIndex2].pibpercapta) ? 1 : 0;
+
+            break;
+
+        case 5:
+
+            printf("\nComparando a Densidade populacional das cidades.\n");
+            comparacao2 = (estados[estadoIndex1].cidades[cidadeIndex1].densidadepopulacional < estados[estadoIndex2].cidades[cidadeIndex2].densidadepopulacional) ? 1 : 0;
+
+            break;
+
+        default:
+
+        printf("Opção Invalida.");
+
+            break;
+        }
+    }
+        //Comparação dos atributos, se ambos os atributos forem "1" o player vence, se for "1" e "0" é um empate e se for "0" e "0" o CPU vence.
+        if (comparacao1 && comparacao2)
+        {
+
+            printf("\nVocê Venceu!\n");
+
+        }else if (comparacao1 != comparacao2)
+        {
+
+            printf("\nFoi um Empate!\n");
+
+        }else{
+
+            printf("\nVocê Perdeu!\n");
+
+        }
+
+        break;
+    }
+
+    case 3:
+    // Exibição das regras do jogo.
+    printf("\n ---------- REGRAS ----------\n");
+    printf("1. Existem 8 estados, contendo 4 cidades cada.\n");
+    printf("2. As cidades possuem atributos.\n");
+    printf("3. Os jogadores escolheram 1 cidade cada.\n");
+    printf("4. Após a seleção das cidades os jogadores poderam escolher 2 atributos a serem comparados.\n");
+    printf("5. Cada atributo vale 1 ponto, vence aquele que fizer 2 pontos.\n");
+    printf("6. No modo Vs CPU, a segunda carta será escolhida aleatoriamente.\n");
+
+        break;
+
+    case 4:
+    // Mensagem de Saida.
+    printf("\nSaindo...\n");
+
+        break;
+    
+    default:
+    // Aviso de escolha invalida no menu inicial.
+    printf("\nOpção Invalida\n");
+
+        break;
+    }
+
+        printf("\n--------------- GAME OVER ---------------\n");
 
     return 0;
 }
